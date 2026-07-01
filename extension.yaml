@@ -1,0 +1,106 @@
+id: jcode.lang.kotlin
+name: Kotlin Language Pack
+publisher: jcode
+version: 0.1.0
+type: language
+description: Coloring, completions, snippets, and a basic formatter for Kotlin.
+language:
+  id: kotlin
+  extensions: [".kt", ".kts"]
+  comment:
+    line: "//"
+    blockStart: "/*"
+    blockEnd: "*/"
+  strings: ["\"", "'"]
+  keywords: [fun, val, var, class, object, interface, data, sealed, enum, annotation,
+    companion, init, constructor, override, open, abstract, final, private, protected,
+    internal, public, inline, infix, operator, suspend, tailrec, external, const,
+    lateinit, vararg, crossinline, noinline, reified, if, else, when, for, while, do,
+    return, break, continue, in, is, as, throw, try, catch, finally, import, package,
+    typealias, by, where, get, set, field, this, super, null, true, false, it, out,
+    expect, actual]
+  types: [Int, Long, Short, Byte, Double, Float, Boolean, Char, String, Any, Unit,
+    Nothing, Array, List, MutableList, Set, MutableSet, Map, MutableMap, Pair, Triple,
+    Sequence, Iterable, Collection, Function, Lazy, Result, IntArray, LongArray,
+    DoubleArray, BooleanArray, CharArray]
+  formatter:
+    # Best-effort runtime formatter (runs in the embedded distro). {{file}} is the
+    # guest path. Falls back to the basic rules below when no toolchain is present.
+    command: "ktlint -F {{file}} 2>/dev/null || ktfmt {{file}} 2>/dev/null || true"
+    indent: 4
+    trimTrailingWhitespace: true
+    insertFinalNewline: true
+  completions:
+    - label: fn
+      detail: Function
+      insert: "fun $1($2): $3 {\n    $0\n}"
+    - label: main
+      detail: main entry point
+      insert: "fun main() {\n    $0\n}"
+    - label: val
+      detail: Read-only property
+      insert: "val $1 = $0"
+    - label: var
+      detail: Mutable property
+      insert: "var $1 = $0"
+    - label: cls
+      detail: Class
+      insert: "class $1($2) {\n    $0\n}"
+    - label: data
+      detail: Data class
+      insert: "data class $1(val $2)$0"
+    - label: obj
+      detail: Object declaration
+      insert: "object $1 {\n    $0\n}"
+    - label: inter
+      detail: Interface
+      insert: "interface $1 {\n    $0\n}"
+    - label: enum
+      detail: Enum class
+      insert: "enum class $1 { $0 }"
+    - label: when
+      detail: when expression
+      insert: "when ($1) {\n    $2 -> $3\n    else -> $0\n}"
+    - label: forr
+      detail: for loop
+      insert: "for ($1 in $2) {\n    $0\n}"
+    - label: ifn
+      detail: if block
+      insert: "if ($1) {\n    $0\n}"
+    - label: println
+      detail: Print line
+      insert: "println($0)"
+    - label: sealed
+      detail: Sealed class
+      insert: "sealed class $1 {\n    $0\n}"
+    - label: comp
+      detail: Companion object
+      insert: "companion object {\n    $0\n}"
+    - label: lazy
+      detail: Lazy property
+      insert: "val $1 by lazy { $0 }"
+    - label: try
+      detail: try / catch
+      insert: "try {\n    $1\n} catch (e: $2) {\n    $0\n}"
+  helpers:
+    - title: Extension function
+      snippet: "fun $1.$2(): $3 {\n    $0\n}"
+    - title: Null-safe let (?.let { })
+      snippet: "$1?.let {\n    $0\n}"
+    - title: Coroutine scope (launch { })
+      snippet: |
+        launch {
+            $0
+        }
+    - title: Sealed class
+      snippet: |
+        sealed class $1 {
+            data class $2(val $3) : $1()
+            object $4 : $1()
+        }
+    - title: when expression
+      snippet: |
+        when ($1) {
+            $2 -> $3
+            else -> $0
+        }
