@@ -1,7 +1,7 @@
 id: jcode.lang.kotlin
 name: Kotlin Language Pack
 publisher: jcode
-version: 0.1.0
+version: 0.1.1
 type: language
 description: Coloring, completions, snippets, and a basic formatter for Kotlin.
 language:
