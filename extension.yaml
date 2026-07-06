@@ -104,3 +104,18 @@ language:
             $2 -> $3
             else -> $0
         }
+
+# --- header fields merged from extension.jehm ---
+shortDescription: Coloring, completions, snippets, and a basic formatter for Kotlin.
+minJCodeVersion: 1.0.0
+targetJCodeVersion: 1.0.0
+category: Languages
+subcategory: Kotlin
+images:
+  icon: media/icon.png
+  samples: []
+  walkthrough: []
+entry:
+  manifest: extension.yaml
+  ui: null
+  libs: []
