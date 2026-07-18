@@ -1,7 +1,7 @@
 id: jcode.lang.kotlin
-name: Kotlin Language Pack
+name: Kotlin Dev Pack
 publisher: jcode
-version: 0.1.1
+version: 0.1.2
 type: language
 # The Kotlin language server and its JDK (which also powers the ktlint formatter) install automatically
 # as requirements so the pack works out of the box; java-debug (JDWP) stays suggested — it's a manual,

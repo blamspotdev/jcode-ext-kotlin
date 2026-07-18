@@ -1,4 +1,4 @@
-# J Code — Kotlin Language Pack
+# J Code — Kotlin Dev Pack
 
 A JCode **language** extension for Kotlin: syntax coloring and keyword/type
 highlighting, as-you-type completions with snippet helpers, and a best-effort
